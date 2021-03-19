@@ -1,0 +1,11 @@
+body{
+    background-color: #F1F1F1;
+}
+.borde{
+
+    border-bottom: 4px solid #008BBC;
+}
+
+.avatar{
+    width: 28%;
+}

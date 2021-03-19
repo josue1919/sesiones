@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Recepción de datos</h2>
+            </div>
+            <div class="card-body">
+
+                <form action="/users/edit/{{users._id}}?_method=PUT" method="POST">
+                    <input type="hidden" name="_method" value="PUT">
+
+                    <div class="row">
+                        <!--columna imagenes-->
+                        <div class="col d-flex flex-column align-items-center">
+                            <!--imagen-->
+                            <div class="form-group ">
+                                <img src="/img/images.png" alt="imagen user" class="img-thumbnail ">
+                            </div>
+                            <!--oton subida-->
+                            <div class="form-group">
+
+                                <label>
+                                    <div class="btn  btn-danger"> <i class="fas fa-upload p-1"></i>Imagen</div>
+                                    <input type="file" name="imagen" hidden>
+                                </label>
+                            </div>
+
+                        </div>
+                        <!--columna inputs-->
+                        <div class="col ">
+                            <div class="form-group">
+                                <input type="text" class="form-control p-4" placeholder="Nombre" name="name"
+                                    value="{{users.name}}" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control p-4" placeholder="Correo electronico"
+                                    value="{{users.email}}" name="email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control p-4" placeholder="Contraseña" name="password"
+                                >
+                            </div>
+                            <!--<div class="form-group">
+                                <input type="password" class="form-control p-4" name="confirm_password"
+                                    placeholder="Confirma contraseña" value="{{confirm_password}}">
+                            </div>-->
+                        </div>
+                    </div>
+
+                    <!--columna boton guardar-->
+                    <div class="form-group">
+                        <button class="btn btn-warning btn-block" type="submit">
+                            Actualizar
+                            <i class="p-1 fas fa-save"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
