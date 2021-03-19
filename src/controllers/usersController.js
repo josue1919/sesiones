@@ -1,5 +1,8 @@
 const User = require("../models/Users");
-const Borrar=require('fs');
+const { unlink } = require('fs-extra');
+
+// const Users = require("../models/Users");
+const path = require('path');
 
 module.exports = {
   //para traer todos los usuarios
@@ -96,9 +99,16 @@ module.exports = {
   //eliminar un usuario
 
   Delete: async function (req, res) {
+    //borrar la imagen de la ruta
+    
+
+      // const { id } = req.params;
+
     console.log(req.params.id);
-    await User.findByIdAndDelete(req.params.id);
-    req.flash("sucess_msg", "Usuario eliminado satisfactoriamente");
+    const imagenDelete=await User.findByIdAndDelete(req.params.id);
+    await unlink(path.resolve( __dirname,'../public')+imagenDelete.path)
+
+    req.flash("success_msg", "Usuario eliminado satisfactoriamente");
     res.redirect("/users/all");
   },
 };
