@@ -1,8 +1,28 @@
 const express=require('express');
 const router=express.Router();
 const usersController=require('../controllers/usersController')
+const multer=require('multer');
+var fecha=Date.now();
+
+var rutaAlmacen=multer.diskStorage(
+
+    {
+        destination:function(request,file,callback) {
+            callback(null, './public/img/');
+            
+        },
+        filename:function(request,file,callback){
+
+            console.log(file);
+            callback(null,fecha+"_"+file.originalname)
+        }
 
 
+    }
+
+);
+
+var cargar=multer({storage:rutaAlmacen});
 
 
 //para ver la tablade los empleados
@@ -15,7 +35,7 @@ router.get('/users/add', (req, res) => {
 });
 
 //para crear empleados
-router.post('/users/add',usersController.guardar );
+router.post('/users/add',cargar.single("imagen"),usersController.guardar );
 
 //para obtener la ruta de la edicion
 router.get('/users/edit/:id',usersController.getEdit);
