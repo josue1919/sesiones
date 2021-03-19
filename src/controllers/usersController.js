@@ -64,7 +64,9 @@ module.exports = {
         email,
         password,
         confirm_password,
+        
       });
+      
     } else {
       // Look for email coincidence
 
