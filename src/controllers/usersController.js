@@ -30,13 +30,26 @@ module.exports = {
 
   guardar: async function (req, res) {
     console.log(req.body);
-
     var errors = [];
-    var filename=req.file.filename;
-    const path='/uploads/images/'+req.file.filename;
+
+   //validamos que la imagen no puede estar vacia
+   if(req.file){
+    if(req.file.filename){
+      var path='/uploads/images/'+req.file.filename;
+      var filename=req.file.filename;
+
+    }
+   }
+
+   if(!req.file){
+    errors.push({ text: "La imagen no puede estar vacia" });
+
+   }
+
     const { name, email, password, confirm_password } = req.body;
+   //validaciones de campos vacios
     if (!name || !email || !password || !confirm_password) {
-      errors.push({ text: "Algun dato esta vacio" });
+      errors.push({ text: "Algun campo esta vacio" });
     }
     if (password != confirm_password) {
       errors.push({ text: "contraseñas no coinciden" });
