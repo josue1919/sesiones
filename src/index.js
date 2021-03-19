@@ -4,7 +4,11 @@ const exhbs=require('express-handlebars');
 const methodOverride=require('method-override');
 const session=require('express-session');
 const flash=require('connect-flash');
+const uuid = require('uuid/v4');
 
+
+
+const multer = require('multer');
 //inicializaiones
 const app=express();
 require('./database');
@@ -21,6 +25,9 @@ app.engine('.hbs',exhbs({
 }));
 app.set('view engine', '.hbs');
 //midelwares
+
+
+// app.use(multer({rutaAlmacen}).single("imagen"))
 app.use(express.urlencoded({extended:false}));
 app.use(methodOverride('_method'));
 app.use(session({

@@ -3,14 +3,13 @@ const router=express.Router();
 const usersController=require('../controllers/usersController')
 const multer=require('multer');
 var fecha=Date.now();
+const path = require('path');
 
 var rutaAlmacen=multer.diskStorage(
 
     {
-        destination:function(request,file,callback) {
-            callback(null, './public/img/');
-            
-        },
+        destination: path.join(__dirname, '../public/uploads/images/'),
+
         filename:function(request,file,callback){
 
             console.log(file);

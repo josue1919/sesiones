@@ -1,5 +1,5 @@
 const User = require("../models/Users");
-
+const Borrar=require('fs');
 
 module.exports = {
   //para traer todos los usuarios
@@ -12,7 +12,9 @@ module.exports = {
             return {
               name: documento.name,
               email: documento.email,
+              filename:documento.filename,
               _id: documento._id,
+              
             };
           }),
         };
@@ -24,9 +26,11 @@ module.exports = {
   //para guardar usuarios
 
   guardar: async function (req, res) {
-    console.log(req.file);
+    console.log(req.body);
+
     var errors = [];
-   const image=req.file.filename;
+    var filename=req.file.filename;
+    const path='/uploads/images/'+req.file.filename;
     const { name, email, password, confirm_password } = req.body;
     if (!name || !email || !password || !confirm_password) {
       errors.push({ text: "Algun dato esta vacio" });
@@ -56,7 +60,7 @@ module.exports = {
         res.redirect("/users/add");
       } else {
         // Saving a New User
-        const newUser = new User({ name, email, password, image });
+        const newUser = new User({ name, email, password,filename,path });
         newUser.password = await newUser.encryptPassword(password);
         await newUser.save();
         req.flash("success_msg", "Usuario registrado");
