@@ -38,7 +38,7 @@ router.post('/users/add',cargar.single("imagen"),usersController.guardar );
 
 //para obtener la ruta de la edicion
 router.get('/users/edit/:id',usersController.getEdit);
-router.put('/users/edit/:id',usersController.Update);
+router.put('/users/edit/:id',cargar.single("imagen"),usersController.Update);
 router.delete('/users/delete/:id',usersController.Delete);
 
 

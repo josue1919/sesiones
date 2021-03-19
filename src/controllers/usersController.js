@@ -2,7 +2,7 @@ const User = require("../models/Users");
 const { unlink } = require('fs-extra');
 
 // const Users = require("../models/Users");
-const path = require('path');
+const ruta = require('path');
 
 module.exports = {
   //para traer todos los usuarios
@@ -82,6 +82,7 @@ module.exports = {
         return {
           name: documento.name,
           email: documento.email,
+          filename:documento.filename,
           _id: documento._id,
         };
       });
@@ -90,10 +91,39 @@ module.exports = {
 
   //metodo put para hacer update en la bd
   Update: async function (req, res) {
-    const { name, email, password } = req.body;
-    await User.findByIdAndUpdate(req.params.id, { name, email, password });
+    //para la imagen eliminar si se actualiza eliminar la de  src
+    if(req.file){
+
+      if(req.file.filename){
+        console.log(req.params.id);
+        const imagenDelete=await User.findById(req.params.id);
+        await unlink(ruta.resolve( __dirname,'../public/uploads/images/')+"/"+imagenDelete.filename)
+
+
+
+        var filename=req.file.filename;
+      const path='/uploads/images/'+req.file.filename;
+  
+      const { name, email, password } = req.body;
+      await User.findByIdAndUpdate(req.params.id, { name, email, password,filename,path });
+      }
+
+
+    }
+
+    //si no se cambia la imagen no se eliminara
+    
+    if(req.body.name){
+      // var filename=req.file.filename;
+      // const path='/uploads/images/'+req.file.filename;
+  
+      const { name, email, password } = req.body;
+      await User.findByIdAndUpdate(req.params.id, { name, email, password });
+    }
     req.flash("success_msg", "El usuario a sido actualizado");
+
     res.redirect("/users/all");
+
   },
 
   //eliminar un usuario
@@ -106,7 +136,7 @@ module.exports = {
 
     console.log(req.params.id);
     const imagenDelete=await User.findByIdAndDelete(req.params.id);
-    await unlink(path.resolve( __dirname,'../public')+imagenDelete.path)
+    await unlink(ruta.resolve( __dirname,'../public')+imagenDelete.path)
 
     req.flash("success_msg", "Usuario eliminado satisfactoriamente");
     res.redirect("/users/all");
