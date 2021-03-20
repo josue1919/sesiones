@@ -8,9 +8,12 @@ const ruta = require('path');
 
 
 module.exports = {
+
+
+  
   //para traer todos los usuarios
   index: async function (req, res) {
-    console.log(req.user)
+    // console.log(req.user)
     await User.find({user:req.user.id})
       .sort({ date: "desc" })
       .then((documentos) => {
@@ -33,7 +36,14 @@ module.exports = {
   //para guardar usuarios
 
   guardar: async function (req, res) {
-    console.log(req.body);
+    //variable para guardar las paginas
+    var inicio=req.body.inicio;
+    var galeria=req.body.galeria;
+    var mapa=req.body.mapa;
+    var ilustraciones=req.body.ilustraciones;
+    var eventos=req.body.eventos;
+    //guardamos todos en un arreglo de arrays
+    const pages=[inicio,galeria,mapa,ilustraciones,eventos];
     var errors = [];
 
    //validamos que la imagen no puede estar vacia
@@ -86,7 +96,7 @@ module.exports = {
         
        
            // Saving a New User
-        const newUser = new User({ name, email, password,filename,path });
+        const newUser = new User({ name, email, password,filename,path,pages });
         newUser.password = await newUser.encryptPassword(password);
         newUser.user=req.user.id;
         await newUser.save();
