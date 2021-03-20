@@ -1,0 +1,38 @@
+<!-- As a link -->
+
+<nav class="navbar navbar-light bg-light">
+ 
+
+{{#if user}}
+  
+  <a class="btn btn-primary" href="/empleados/logout">logout</a>
+
+  {{#each user}}
+       {{#each pages}}
+          <!--si existe el nombre de la pagina la mapea sino no-->
+          {{#if namepage}}
+           <a class="navbar-brand" href="/empleados/{{namepage}}">{{namepage}}</a>
+          {{/if}}
+       {{/each}}
+      <a class="nav-link disabled"  tabindex="-1" aria-disabled="true">{{email}}</a>
+
+  {{/each}}
+
+  {{else}}
+  <a class="navbar-brand" href="">Empleados</a>
+{{/if}}
+</nav>
+
+
+
+
+
+
+<br/><br/>
+
+<!--alertas-->
+<main class="container">
+  {{> messages}}
+{{> errors}}
+
+</main>

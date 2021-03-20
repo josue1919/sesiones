@@ -42,8 +42,8 @@ module.exports = {
     var mapa=req.body.mapa;
     var ilustraciones=req.body.ilustraciones;
     var eventos=req.body.eventos;
-    //guardamos todos en un arreglo de arrays
-    const pages=[inicio,galeria,mapa,ilustraciones,eventos];
+    //guardamos todos en un arreglo de objetos
+    const pages=[{namepage:inicio},{namepage:galeria},{namepage:mapa},{namepage:ilustraciones},{namepage:eventos}];
     var errors = [];
 
    //validamos que la imagen no puede estar vacia

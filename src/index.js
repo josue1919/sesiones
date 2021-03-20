@@ -18,12 +18,14 @@ require('./config/passport');
 app.set('port',process.env.PORT || 3000);
 app.set('views',path.join(__dirname, 'views'));
 app.engine('.hbs',exhbs({
-    defaultLayout:'main',
+    defaultLayout:'main' ,
     layoutsDir:path.join(app.get('views'),'layouts'),
     partialsDir:path.join(app.get('views'),'partials'),
     extname:'.hbs'
    
 }));
+
+
 app.set('view engine', '.hbs');
 //midelwares
 
@@ -54,6 +56,7 @@ app.use((req,res,next)=>{
 //rutas
 app.use(require('./routes/index'));
 app.use(require('./routes/users'));
+app.use(require('./routes/empleados'));
 
 //static files
 app.use(express.static(path.join(__dirname,'public')));
