@@ -11,6 +11,7 @@ const UserSchema = new Schema(
       path: {type: String},
       admin:{type:Boolean, default:false},
       date: { type: Date, default: Date.now },
+      pages:{type:Array},
       user:{type:String}
     },
     {
