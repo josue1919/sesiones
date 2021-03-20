@@ -4,10 +4,14 @@ const { unlink } = require('fs-extra');
 // const Users = require("../models/Users");
 const ruta = require('path');
 
+//autenticacion
+
+
 module.exports = {
   //para traer todos los usuarios
   index: async function (req, res) {
-    await User.find()
+    console.log(req.user)
+    await User.find({user:req.user.id})
       .sort({ date: "desc" })
       .then((documentos) => {
         const contexto = {
@@ -40,12 +44,14 @@ module.exports = {
 
     }
    }
-
    if(!req.file){
     errors.push({ text: "La imagen no puede estar vacia" });
 
+    
+
    }
 
+   
     const { name, email, password, confirm_password } = req.body;
    //validaciones de campos vacios
     if (!name || !email || !password || !confirm_password) {
@@ -68,21 +74,27 @@ module.exports = {
       });
       
     } else {
-      // Look for email coincidence
+      // buscar email iguales
 
-      // Saving a New User
+    
       const emailUser = await User.findOne({ email: email });
       if (emailUser) {
         req.flash("error_msg", "EL correo electronico ya esta en uso");
 
         res.redirect("/users/add");
       } else {
-        // Saving a New User
+        
+       
+           // Saving a New User
         const newUser = new User({ name, email, password,filename,path });
         newUser.password = await newUser.encryptPassword(password);
+        newUser.user=req.user.id;
         await newUser.save();
         req.flash("success_msg", "Usuario registrado");
         res.redirect("/users/all");
+
+        
+       
       }
     }
   },

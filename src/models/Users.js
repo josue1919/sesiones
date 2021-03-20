@@ -9,7 +9,7 @@ const UserSchema = new Schema(
       password: { type: String, required: true },
       filename:{type:String},
       path: {type: String},
-
+      admin:{type:Boolean, default:false},
       date: { type: Date, default: Date.now },
       user:{type:String}
     },

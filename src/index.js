@@ -6,13 +6,14 @@ const session=require('express-session');
 const flash=require('connect-flash');
 const uuid = require('uuid/v4');
 
+const passport=require('passport');
 
 
 const multer = require('multer');
 //inicializaiones
 const app=express();
 require('./database');
-
+require('./config/passport');
 //setings
 app.set('port',process.env.PORT || 3000);
 app.set('views',path.join(__dirname, 'views'));
@@ -35,7 +36,8 @@ app.use(session({
     resave:true,
     saveUninitialized:true
 }));
-
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 //variables Globales
