@@ -1,0 +1,138 @@
+:root{
+  --logotipo: #1a1a1a;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.header{
+  width: 100%;
+  background-color: rgba(0, 0, 0, .2);
+}
+
+.header ul{
+  text-align: center;
+}
+
+.header ul li{
+  list-style: none;
+  display: inline-block;
+}
+
+.header ul li a{
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 15px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  letter-spacing: 2px;
+  font-weight: 400;
+  padding: 20px;
+  transition: all ease 0.5s;
+}
+
+.header ul li a:hover{
+  background-color: #211b4485;
+}
+
+.video_background {
+  height: auto;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  right: 0px;
+  min-width: 10%;
+  min-height: 10%;
+  z-index: -1000;
+  overflow: hidden;
+  }
+
+  .icono{
+    position: absolute;
+    transition: all ease 0.5s;
+  }
+
+  main{
+    width: 100%;
+    margin: auto;
+    max-width: 800px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+  }
+
+  
+.wordCarousel {
+  font-size: 36px;
+  font-weight: 100;
+  color: #eee;
+}
+
+.ct {
+  overflow: hidden;
+  position: relative;
+  float: right;
+  height: 65px;
+  padding-top: 10px;
+  margin-top: -10px;
+}
+
+.list {
+  font-family: Serif;
+  color: #eee;
+  font-weight: 700;
+  padding: 0 10px;
+  height: 45px;
+  margin-bottom: 45px;
+  display: block;
+}
+
+.flip2 { animation: flip2 5s cubic-bezier(0.23, 1, 0.32, 1.2) infinite; }
+.flip3 { animation: flip3 7s cubic-bezier(0.23, 1, 0.32, 1.2) infinite; }
+.flip4 { animation: flip4 9s cubic-bezier(0.23, 1, 0.32, 1.2) infinite; }
+
+@keyframes flip2 {
+  0% { margin-top: -180px; }
+  5% { margin-top: -90px;  }
+  50% { margin-top: -90px; }
+  55% { margin-top: 0px; }
+  99.99% { margin-top: 0px; }
+  100% { margin-top: -270px; }
+}
+
+@keyframes flip3 {
+  0% { margin-top: -270px; }
+  5% { margin-top: -180px; }
+  33% { margin-top: -180px; }
+  38% { margin-top: -90px; }
+  66% { margin-top: -90px; }
+  71% { margin-top: 0px; }
+  99.99% { margin-top: 0px; }
+  100% { margin-top: -270px; }
+}
+
+@keyframes flip4 {
+  0% { margin-top: -360px; }
+  5% { margin-top: -270px; }
+  25% { margin-top: -270px; }
+  30% { margin-top: -180px; }
+  50% { margin-top: -180px; }
+  55% { margin-top: -90px; }
+  75% { margin-top: -90px; }
+  80% { margin-top: 0px; }
+  99.99% { margin-top: 0px; }
+  100% { margin-top: -270px; }
+}
+  

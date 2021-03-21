@@ -1,27 +1,31 @@
-{{> navempleado}}
-<div class="col-md-4 mx-auto">
-    <div class="  card borde">
-        <div class="card-body">
-            <img src="/img/user.png" alt="user logo" class="rounded-circle mx-auto d-block avatar m-4">
 
-            <h3 class="text-header text-center">Login</h3>
-            <form action="/empleados/signin" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="email" name="email" placeholder="Correo electronico" autofocus>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="contraseña">
-                </div>
 
-                <div class="form-group">
+    <div id="back">
 
-                    <button class="btn btn-primary btn-block" type="submit">
-
-                        Iniciar Sesión
-                        <i class="fas fa-sign-in-alt"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
     </div>
-</div>
+    
+    <div id="slideBox">
+      <div class="topLayer">
+
+        <div class="right">
+          <div class="content">
+            <h2>Inicio De Sesión</h2>
+            <form id="form-login" method="POST" action="/empleados/signin">
+              <div class="form-element form-stack">
+                <label for="username-login" class="form-label">Correo</label>
+                <input id="username-login" type="email" name="email">
+              </div>
+              <div class="form-element form-stack">
+                <label for="password-login" class="form-label">Contraseña</label>
+                <input id="password-login" type="password" name="password">
+              </div>
+              <div class="form-element form-submit">
+                <button id="logIn" class="login" type="submit" name="login">Log In</button>
+                <button id="goRight" class="login off" name="signup">Sign Up</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
