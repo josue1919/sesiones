@@ -13,25 +13,33 @@ module.exports = {
   
   //para traer todos los usuarios
   index: async function (req, res) {
-    // console.log(req.user)
+
+    if(!req.user.admin){
+      req.flash("error_msg", "No es admin");
+      req.logOut();
+     res.redirect('/');
+    }else{{
+       // console.log(req.user)
     await User.find({user:req.user.id})
-      .sort({ date: "desc" })
-      .then((documentos) => {
-        const contexto = {
-          users: documentos.map((documento) => {
-            return {
-              name: documento.name,
-              email: documento.email,
-              filename:documento.filename,
-              _id: documento._id,
-              
-            };
-          }),
-        };
-        res.render("users/all-user", {
-          users: contexto.users,
-        });
+    .sort({ date: "desc" })
+    .then((documentos) => {
+      const contexto = {
+        users: documentos.map((documento) => {
+          return {
+            name: documento.name,
+            email: documento.email,
+            filename:documento.filename,
+            _id: documento._id,
+            
+          };
+        }),
+      };
+      res.render("users/all-user", {
+        users: contexto.users,
       });
+    });
+    }}
+   
   },
   //para guardar usuarios
 
@@ -97,7 +105,7 @@ module.exports = {
        
            // Saving a New User
         const newUser = new User({ name, email, password,filename,path,pages });
-        newUser.password = await newUser.encryptPassword(password);
+        // newUser.password = await newUser.encryptPassword(password);
         newUser.user=req.user.id;
         await newUser.save();
         req.flash("success_msg", "Usuario registrado");
@@ -128,6 +136,14 @@ module.exports = {
 
   //metodo put para hacer update en la bd
   Update: async function (req, res) {
+    //variable para guardar las paginas
+    var inicio=req.body.inicio;
+    var galeria=req.body.galeria;
+    var mapa=req.body.mapa;
+    var ilustraciones=req.body.ilustraciones;
+    var eventos=req.body.eventos;
+    //guardamos todos en un arreglo de objetos
+    const pages=[{namepage:inicio},{namepage:galeria},{namepage:mapa},{namepage:ilustraciones},{namepage:eventos}];
     //para la imagen eliminar si se actualiza eliminar la de  src
     if(req.file){
 
@@ -140,9 +156,12 @@ module.exports = {
 
         var filename=req.file.filename;
       const path='/uploads/images/'+req.file.filename;
-  
+            
+            
       const { name, email, password } = req.body;
-      await User.findByIdAndUpdate(req.params.id, { name, email, password,filename,path });
+      
+
+      await User.findByIdAndUpdate(req.params.id, {  name, email, password ,filename,path,pages});
       }
 
 
@@ -155,13 +174,18 @@ module.exports = {
       // const path='/uploads/images/'+req.file.filename;
   
       const { name, email, password } = req.body;
-      await User.findByIdAndUpdate(req.params.id, { name, email, password });
+     
+
+      await User.findByIdAndUpdate(req.params.id, { name, email, password ,pages  });
     }
     req.flash("success_msg", "El usuario a sido actualizado");
 
     res.redirect("/users/all");
 
   },
+
+
+  
 
   //eliminar un usuario
 

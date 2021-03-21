@@ -36,7 +36,7 @@ router.get('/empleados/ilustraciones',isAuthenticated, (req, res) => {
 
 //para el login
 router.post('/empleados/signin', passport.authenticate('local',{
-
+    
     successRedirect:'/empleados/inicio',
     failureRedirect:'/empleados/login',
     failureFlash:true

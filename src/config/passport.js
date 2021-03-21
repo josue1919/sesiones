@@ -12,8 +12,12 @@ passport.use(new LocalStrategy({
     //va a buscar en la base de datos a un usuario por su email
     const user=await User.findOne({email:email});
     //si el usuario no existe nos dara un mensaje de error
+    // if(!user.admin){
+    //     return done(null,false,{message:'No es admin'});
+    // }
     if(!user){
         return done(null,false,{message:'usuario no econtrado'});
+        
     }else{
         //en base al usuario encontado se compara si coincide con su contraseña
         const match=await user.matchPassword(password);
