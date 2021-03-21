@@ -10,6 +10,7 @@ const passport=require('passport');
 var rutaAlmacen=multer.diskStorage(
 
     {
+        
         destination: path.join(__dirname, '../public/uploads/images/'),
 
         filename:function(request,file,callback){

@@ -57,9 +57,11 @@ module.exports = {
    //validamos que la imagen no puede estar vacia
    if(req.file){
     if(req.file.filename){
-      var path='/uploads/images/'+req.file.filename;
+      if(req.body){
+        var path='/uploads/images/'+req.file.filename;
       var filename=req.file.filename;
 
+      }
     }
    }
    if(!req.file){
@@ -74,6 +76,7 @@ module.exports = {
    //validaciones de campos vacios
     if (!name || !email || !password || !confirm_password) {
       errors.push({ text: "Algun campo esta vacio" });
+     
     }
     if (password != confirm_password) {
       errors.push({ text: "contraseñas no coinciden" });
@@ -88,6 +91,7 @@ module.exports = {
         email,
         password,
         confirm_password,
+       
         
       });
       
@@ -101,8 +105,8 @@ module.exports = {
 
         res.redirect("/users/add");
       } else {
-        
        
+        
            // Saving a New User
         const newUser = new User({ name, email, password,filename,path,pages });
         // newUser.password = await newUser.encryptPassword(password);
@@ -128,7 +132,9 @@ module.exports = {
           name: documento.name,
           email: documento.email,
           filename:documento.filename,
+          password:documento.password,
           _id: documento._id,
+
         };
       });
     res.render("users/edit-user", { users });
