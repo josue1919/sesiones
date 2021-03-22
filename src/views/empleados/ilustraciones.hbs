@@ -1,12 +1,40 @@
-{{> navempleado}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/ilustraciones.css">
+</head>
+<body>
+    {{> navempleado}}
     <div class="grid-container">
-        <img class="grid-item" src="./public/img/Ilustraciones/albedo.jfif" alt="">
-        <img class="grid-item" src="./public/img/Ilustraciones/Amber.jfif" alt="">
-        <img class="grid-item" src="./public/img/main.jpg" alt="">
-        <img class="grid-item" src="./public/img/Ilustraciones/Ganyu.jfif" alt="">
-        <img class="grid-item" src="./public/img/Ilustraciones/albedo.jfif" alt="">
-        <img class="grid-item" src="./public/img/Ilustraciones/Amber.jfif" alt="">
-        <img class="grid-item" src="./public/img/main.jpg" alt="">
-        <img class="grid-item" src="./public/img/Ilustraciones/Ganyu.jfif" alt="">
-        <img class="grid-item" src="./public/img/Icon.png" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest1.jfif" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest2.jfif" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest3.jfif" alt="">        
+        <img class="grid-item" src="/img/Pin/pinterest5.jfif" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest6.jfif" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest7.jfif" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest8.jfif" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest9.jfif" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest10.jfif" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest11.jfif" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest12.jfif" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest13.jfif" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest14.jfif" alt="">
+        <img class="grid-item" src="/img/Pin/pinterest15.jfif" alt="">
     </div>
+</body>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+<script>
+   var elem = document.querySelector(".grid-container");
+       var msnry = new Masonry(elem, {
+           itemSelector: ".grid-item",
+           columnWidth: 230, 
+           gutter:20,
+           isFitWidth: true
+   });
+</script>
+
+</html>

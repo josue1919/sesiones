@@ -256,6 +256,7 @@ body{
     background: #e3e3e3;
   }
   
+  
   @media only screen and (max-width: 768px) {
     #slideBox {
       width: 80%;
