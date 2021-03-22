@@ -2,15 +2,15 @@
     --font-default: 'Merriweather', serif;
 }
 
-
-
-body {
-  margin: 0;
-  height: 100%;
-  overflow: hidden;
-  width: 100% !important;
+*{
   box-sizing: border-box;
-  font-family: var(--font-default);
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  margin: 0;
+  padding: 0;
 }
 
 #back {

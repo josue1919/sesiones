@@ -13,36 +13,7 @@ body{
   padding: 0;
 }
 
-.header{
-  width: 100%;
-  background-color: rgba(0, 0, 0, .2);
-}
 
-.header ul{
-  text-align: center;
-}
-
-.header ul li{
-  list-style: none;
-  display: inline-block;
-}
-
-.header ul li a{
-  display: block;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 15px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  letter-spacing: 2px;
-  font-weight: 400;
-  padding: 20px;
-  transition: all ease 0.5s;
-}
-
-.header ul li a:hover{
-  background-color: #211b4485;
-}
 
 .video_background {
   height: auto;
@@ -65,7 +36,7 @@ body{
     width: 100%;
     margin: auto;
     max-width: 800px;
-    min-height: 100vh;
+    min-height: 30vh;
     display: flex;
     flex-direction: column;
     align-items: center;
