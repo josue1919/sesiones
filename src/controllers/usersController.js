@@ -45,46 +45,11 @@ module.exports = {
 
   guardar: async function (req, res) {
     //variable para guardar las paginas
-    
     var inicio=req.body.inicio;
     var galeria=req.body.galeria;
     var mapa=req.body.mapa;
     var ilustraciones=req.body.ilustraciones;
     var eventos=req.body.eventos;
-    //constante para valores booleanos
-   
-
-
-    
-    if(!req.body.inicio){
-       var inival=false;
-    }else{
-      inival=true
-    }
-
-    if(!req.body.galeria){
-      var galeriaval=false;
-    }else{
-      galeriaval=true;
-    }
-
-    if(!req.body.mapa){
-      var mapaval=false;
-    }else{
-      mapaval=true;
-    }
-
-    if(!req.body.ilustraciones){
-     var ilustracionesval=false;
-    }else{
-      ilustracionesval=true;
-    }
-
-    if(!req.body.eventos){
-      var eventosval=false;
-    }else{
-      eventosval=true;
-    }
     //guardamos todos en un arreglo de objetos
     const pages=[{namepage:inicio},{namepage:galeria},{namepage:mapa},{namepage:ilustraciones},{namepage:eventos}];
     var errors = [];
@@ -111,6 +76,7 @@ module.exports = {
    //validaciones de campos vacios
     if (!name || !email || !password || !confirm_password) {
       errors.push({ text: "Algun campo esta vacio" });
+     
     }
     if (password != confirm_password) {
       errors.push({ text: "contraseñas no coinciden" });
@@ -131,6 +97,7 @@ module.exports = {
       
     } else {
       // buscar email iguales
+
     
       const emailUser = await User.findOne({ email: email });
       if (emailUser) {
@@ -139,9 +106,9 @@ module.exports = {
         res.redirect("/users/add");
       } else {
        
-        console.log("valor de inival "+ inival)
+        
            // Saving a New User
-        const newUser = new User({ name, email, password,filename,path,pages,inival,galeriaval,mapaval,ilustracionesval,eventosval});
+        const newUser = new User({ name, email, password,filename,path,pages });
         // newUser.password = await newUser.encryptPassword(password);
         newUser.user=req.user.id;
         await newUser.save();
@@ -182,7 +149,7 @@ module.exports = {
     var ilustraciones=req.body.ilustraciones;
     var eventos=req.body.eventos;
     //guardamos todos en un arreglo de objetos
-    const pages=[{valor:inicio},{valor:galeria},{valor:mapa},{valor:ilustraciones},{valor:eventos}];
+    const pages=[{namepage:inicio},{namepage:galeria},{namepage:mapa},{namepage:ilustraciones},{namepage:eventos}];
     //para la imagen eliminar si se actualiza eliminar la de  src
     if(req.file){
 
