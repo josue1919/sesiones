@@ -15,14 +15,14 @@
                         <div class="col d-flex flex-column align-items-center">
                             <!--imagen-->
                             <div class="form-group ">
-                                <img src="/uploads/images/{{users.filename}}" alt="imagen user" class="img-thumbnail ">
+                                <img src="/uploads/images/{{users.filename}}" alt="imagen user" class="img-thumbnail " id="image">
                             </div>
                             <!--oton subida-->
                             <div class="form-group">
 
                                 <label>
                                     <div class="btn  btn-danger"> <i class="fas fa-upload p-1"></i>Imagen</div>
-                                    <input type="file" name="imagen" class="form-control" hidden>
+                                    <input type="file" name="imagen" class="form-control" id="file"accept="image/*" hidden>
                                 </label>
                             </div>
 

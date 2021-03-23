@@ -111,6 +111,7 @@ module.exports = {
    //validaciones de campos vacios
     if (!name || !email || !password || !confirm_password) {
       errors.push({ text: "Algun campo esta vacio" });
+
     }
     if (password != confirm_password) {
       errors.push({ text: "contraseñas no coinciden" });
