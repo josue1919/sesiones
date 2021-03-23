@@ -33,6 +33,7 @@ app.set('view engine', '.hbs');
 // app.use(multer({rutaAlmacen}).single("imagen"))
 app.use(express.urlencoded({extended:false}));
 app.use(methodOverride('_method'));
+
 app.use(session({
     secret:'mysecretapp',
     resave:true,
