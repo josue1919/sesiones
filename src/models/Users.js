@@ -12,7 +12,17 @@ const UserSchema = new Schema(
       admin:{type:Boolean, default:false},
       date: { type: Date, default: Date.now },
       pages:{type:Array},
-      user:{type:String}
+      inival:{type:Boolean},
+      galeriaval:{type:Boolean},
+      mapaval:{type:Boolean},
+      ilustracionesval:{type:Boolean},
+      eventosval:{type:Boolean},
+
+      user:{type:String},
+      
+
+
+
     },
     {
       timestamps: true,
