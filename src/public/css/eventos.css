@@ -35,7 +35,7 @@
   }
   
   .card {
-    height: 480px;
+    height: 460px;
     width: 410px;
     border: thin solid transparent;
     border-radius: 10px;
@@ -68,5 +68,5 @@
   }
 
   img{
-    border-radius: 10px;
+    border-radius: 20px;
   }
