@@ -3,13 +3,39 @@ const router=express.Router();
 const{isAuthenticated}=require('../helpers/auth');
 const passport=require('passport');
 
+//para el login
+router.post('/empleados/signin', passport.authenticate('local',{
+
+    successRedirect:'/empleados/inicio',
+    failureRedirect:'/empleados/login',
+    failureFlash:true
+
+}));
+
+
+
+
+
 router.get('/empleados/login',(req,res)=>{
-    res.render('empleados/login')
+
+
+
+
+            res.render('empleados/login')
+
+
+
+
+
 });
 
 router.get('/empleados/inicio',isAuthenticated, (req, res) => {
 
-    res.render('empleados/inicio')
+   
+                res.render('empleados/inicio')
+     
+
+    // res.render('empleados/inicio')
 });
 
 router.get('/empleados/eventos',isAuthenticated, (req, res) => {
@@ -17,7 +43,11 @@ router.get('/empleados/eventos',isAuthenticated, (req, res) => {
 
 });
 router.get('/empleados/mapa',isAuthenticated, (req, res) => {
-    res.render('empleados/mapa');
+
+   
+
+        
+        res.render('empleados/mapa');  
 
 
 });
@@ -28,20 +58,24 @@ router.get('/empleados/galeria',isAuthenticated, (req, res) => {
 });
 
 router.get('/empleados/ilustraciones',isAuthenticated, (req, res) => {
-    res.render('empleados/ilustraciones');
+  console.log(req.user.ilustracionesval)
+    // res.render('empleados/ilustraciones');
+        if(!req.user.ilustracionesval){
+            req.logOut();
+          res.redirect('/empleados/login');
+          req.flash("error_msg", "NO puedes acceder a esta ruta 😠😤");
 
+        }else{
+            res.render('empleados/ilustraciones');
+        }
 
+       
+        
+   
 });
 
 
-//para el login
-router.post('/empleados/signin', passport.authenticate('local',{
-    
-    successRedirect:'/empleados/inicio',
-    failureRedirect:'/empleados/login',
-    failureFlash:true
 
-}));
 //para el logout
 router.get('/empleados/logout', (req, res) => {
 
