@@ -181,8 +181,44 @@ module.exports = {
     var mapa=req.body.mapa;
     var ilustraciones=req.body.ilustraciones;
     var eventos=req.body.eventos;
+
+      //variables para los valores true o false
+      if(!req.body.inicio){
+        var inival=false;
+     }else{
+       inival=true
+     }
+ 
+     if(!req.body.galeria){
+       var galeriaval=false;
+     }else{
+       galeriaval=true;
+     }
+ 
+     if(!req.body.mapa){
+       var mapaval=false;
+     }else{
+       mapaval=true;
+     }
+ 
+     if(!req.body.ilustraciones){
+      var ilustracionesval=false;
+     }else{
+       ilustracionesval=true;
+     }
+ 
+     if(!req.body.eventos){
+       var eventosval=false;
+     }else{
+       eventosval=true;
+     }
+
+
+
+
+
     //guardamos todos en un arreglo de objetos
-    const pages=[{valor:inicio},{valor:galeria},{valor:mapa},{valor:ilustraciones},{valor:eventos}];
+    const pages=[{namepage:inicio},{namepage:galeria},{namepage:mapa},{namepage:ilustraciones},{namepage:eventos}];
     //para la imagen eliminar si se actualiza eliminar la de  src
     if(req.file){
 
@@ -200,7 +236,7 @@ module.exports = {
       const { name, email, password } = req.body;
       
 
-      await User.findByIdAndUpdate(req.params.id, {  name, email, password ,filename,path,pages});
+      await User.findByIdAndUpdate(req.params.id, {  name, email, password ,filename,path,pages,inival,galeriaval,mapaval,ilustracionesval,eventosval});
       }
 
 
@@ -215,7 +251,7 @@ module.exports = {
       const { name, email, password } = req.body;
      
 
-      await User.findByIdAndUpdate(req.params.id, { name, email, password ,pages  });
+      await User.findByIdAndUpdate(req.params.id, { name, email, password ,pages,inival,galeriaval,mapaval,ilustracionesval,eventosval  });
     }
     req.flash("success_msg", "El usuario a sido actualizado");
 

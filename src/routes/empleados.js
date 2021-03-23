@@ -32,27 +32,66 @@ router.get('/empleados/login',(req,res)=>{
 router.get('/empleados/inicio',isAuthenticated, (req, res) => {
 
    
-                res.render('empleados/inicio')
+                if(!req.user.inival){
+                    req.logOut();
+                  res.redirect('/empleados/login');
+                  req.flash("error_msg", "NO puedes acceder a esta ruta 😠😤");
+        
+                }else{
+                    
+                 res.render('empleados/inicio')
+                }
      
 
-    // res.render('empleados/inicio')
+ 
 });
 
 router.get('/empleados/eventos',isAuthenticated, (req, res) => {
-    res.render('empleados/eventos');
+    
+    if(!req.user.eventosval){
+        req.logOut();
+      res.redirect('/empleados/login');
+      req.flash("error_msg", "NO puedes acceder a esta ruta 😠😤");
+
+    }else{
+        
+     res.render('empleados/eventos')
+    }
+
 
 });
 router.get('/empleados/mapa',isAuthenticated, (req, res) => {
 
-   
+    if(!req.user.mapaval){
+        req.logOut();
+      res.redirect('/empleados/login');
+      req.flash("error_msg", "No puedes acceder a esta ruta 😠😤");
 
+    }else{
         
         res.render('empleados/mapa');  
+     
+    }
+
+
+        
+        
 
 
 });
 router.get('/empleados/galeria',isAuthenticated, (req, res) => {
-    res.render('empleados/galeria');
+    if(!req.user.galeriaval){
+        req.logOut();
+      res.redirect('/empleados/login');
+      req.flash("error_msg", "No puedes acceder a esta ruta 😠😤");
+
+    }else{
+        
+        res.render('empleados/galeria');
+     
+    }
+    
+   
 
 
 });

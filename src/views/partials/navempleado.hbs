@@ -1,29 +1,28 @@
+<div class="header">
 
- <div class="header"> 
-   
-{{#if user}}
-  
-        <div class="icono"  href="#">
-            <img src="/img/Icon.png" alt="">
-        </div>
+  {{#if user}}
+
+  <div class="icono" href="#">
+    <img src="/img/Icon.png" alt="">
+  </div>
 
   {{#each user}}
-       {{#each pages}}
-          <!--si existe el nombre de la pagina la mapea sino no-->
-          {{#if namepage}}
-           <a  href="/empleados/{{namepage}}">{{namepage}}</a>
-          {{/if}}
-       {{/each}}
-      <a class=" disabled"  tabindex="-1" aria-disabled="true">{{email}}</a>
-      
+  {{#each pages}}
+  <!--si existe el nombre de la pagina la mapea sino no-->
+  {{#if namepage}}
+  <a href="/empleados/{{namepage}}">{{namepage}}</a>
+  {{/if}}
   {{/each}}
-   <button class="button type1" href="/empleados/logout">
+  <a class=" disabled" tabindex="-1" aria-disabled="true">{{email}}</a>
+
+  {{/each}}
+  <a class="button type1" href="/empleados/logout">
     LogOut
-  </button>
+  </a>
 
   {{else}}
   <a class="navbar-brand" href="">Empleados</a>
-{{/if}}
+  {{/if}}
 </div>
 
 
@@ -32,11 +31,11 @@
 
 
 
-<br/><br/>
+<br /><br />
 
 <!--alertas-->
 <main class="container">
   {{> messages}}
-{{> errors}}
+  {{> errors}}
 
-</main>in>
+</main>
