@@ -168,7 +168,12 @@ module.exports = {
           filename:documento.filename,
           password:documento.password,
           _id: documento._id,
-
+          //para traer los checkbox
+          inival:documento.inival,
+          galeriaval:documento.galeriaval,
+          mapaval:documento.mapaval,
+          ilustracionesval:documento.ilustracionesval,
+          eventosval:documento.eventosval
         };
       });
     res.render("users/edit-user", { users });
