@@ -52,37 +52,92 @@
                     <!--seccion para los checkbox-->
                     <div class="row d-flex justify-content-around align-items-center ">
                         <div class="form-inline col-mb-12 mb-4 ">
-                            
-                                <div class="input-group ml-2">
+                            {{#if users.inival}}
+                                 <div class="input-group ml-2">
+                                    <label>
+                                        <input type="checkbox" aria-label="Checkbox for following text input" value="inicio" name="inicio" checked>
+                                        Página inicio
+                                    </label>
+                                </div>
+                                {{else}}
+                                    <div class="input-group ml-2">
                                     <label>
                                         <input type="checkbox" aria-label="Checkbox for following text input" value="inicio" name="inicio">
                                         Página inicio
                                     </label>
                                 </div>
-                                <div class="input-group ml-2">
+                            {{/if}}
+                            <!--if para la galeria-->
+                            {{#if users.galeriaval}}
+                             <div class="input-group ml-2">
+                                    <label>
+                                        <input type="checkbox" aria-label="Checkbox for following text input" value="galeria" name="galeria" checked>
+                                        Página Galeria
+                                    </label>
+                                </div>
+                            {{else}}
+                             <div class="input-group ml-2">
                                     <label>
                                         <input type="checkbox" aria-label="Checkbox for following text input" value="galeria" name="galeria">
                                         Página Galeria
                                     </label>
                                 </div>
+                            {{/if}}
+                            <!--finaliza if de la galeria-->
+
+                            <!--inicia if de pagina mapa-->
+                            {{#if users.mapaval}}
+                            <div class="input-group ml-2">
+                                    <label>
+                                        <input type="checkbox" aria-label="Checkbox for following text input" value="mapa" name="mapa" checked>
+                                        Página Mapa
+                                    </label>
+                            </div>
+                                {{else}}
                                 <div class="input-group ml-2">
                                     <label>
                                         <input type="checkbox" aria-label="Checkbox for following text input" value="mapa" name="mapa">
                                         Página Mapa
                                     </label>
                                 </div>
-                                <div class="input-group ml-2">
+                            {{/if}}
+                            <!--finaliza if de pagina mapa-->
+                            <!--comienza if de pagina ilustraciones-->
+                            {{#if users.ilustracionesval}}
+                             <div class="input-group ml-2">
+                                    <label>
+                                        <input type="checkbox" aria-label="Checkbox for following text input" value="ilustraciones" name="ilustraciones" checked>
+                                        Página Ilustraciones
+                                    </label>
+                                </div>
+
+                            {{else}}
+                             <div class="input-group ml-2">
                                     <label>
                                         <input type="checkbox" aria-label="Checkbox for following text input" value="ilustraciones" name="ilustraciones">
                                         Página Ilustraciones
                                     </label>
                                 </div>
-                                <div class="input-group ml-2">
+                            {{/if}}
+
+                            <!--finaliza if de pagina ilustraciones--> 
+                            <!--comienza if de pagina eventos-->
+                            {{#if users.eventosval}}
+                             <div class="input-group ml-2">
+                                    <label>
+                                        <input type="checkbox" aria-label="Checkbox for following text input" value="eventos" name="eventos" checked>
+                                        Página Eventos
+                                    </label>
+                                </div>
+                            {{else}}
+                             <div class="input-group ml-2">
                                     <label>
                                         <input type="checkbox" aria-label="Checkbox for following text input" value="eventos" name="eventos">
                                         Página Eventos
                                     </label>
                                 </div>
+                            {{/if}}
+                               
                               
                         </div>
                     </div>
