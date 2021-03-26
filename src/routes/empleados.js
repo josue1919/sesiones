@@ -15,13 +15,12 @@ router.post('/empleados/signin', passport.authenticate('local',{
 
 
 
-
 router.get('/empleados/login',(req,res)=>{
 
 
 
 
-            res.render('empleados/login')
+       res.render('empleados/login')
 
 
 
@@ -33,10 +32,8 @@ router.get('/empleados/inicio',isAuthenticated, (req, res) => {
 
    
                 if(!req.user.inival){
-                    req.logOut();
-                  res.redirect('/empleados/login');
-                  req.flash("error_msg", "NO puedes acceder a esta ruta 😠😤");
-        
+                  res.render('empleados/denegado');
+                  
                 }else{
                     
                  res.render('empleados/inicio')
@@ -49,9 +46,7 @@ router.get('/empleados/inicio',isAuthenticated, (req, res) => {
 router.get('/empleados/eventos',isAuthenticated, (req, res) => {
     
     if(!req.user.eventosval){
-        req.logOut();
-      res.redirect('/empleados/login');
-      req.flash("error_msg", "NO puedes acceder a esta ruta 😠😤");
+      res.render('empleados/denegado');
 
     }else{
         
@@ -63,9 +58,7 @@ router.get('/empleados/eventos',isAuthenticated, (req, res) => {
 router.get('/empleados/mapa',isAuthenticated, (req, res) => {
 
     if(!req.user.mapaval){
-        req.logOut();
-      res.redirect('/empleados/login');
-      req.flash("error_msg", "No puedes acceder a esta ruta 😠😤");
+      res.render('empleados/denegado');
 
     }else{
         
@@ -81,9 +74,7 @@ router.get('/empleados/mapa',isAuthenticated, (req, res) => {
 });
 router.get('/empleados/galeria',isAuthenticated, (req, res) => {
     if(!req.user.galeriaval){
-        req.logOut();
-      res.redirect('/empleados/login');
-      req.flash("error_msg", "No puedes acceder a esta ruta 😠😤");
+      res.render('empleados/denegado');
 
     }else{
         
@@ -100,9 +91,7 @@ router.get('/empleados/ilustraciones',isAuthenticated, (req, res) => {
   console.log(req.user.ilustracionesval)
     // res.render('empleados/ilustraciones');
         if(!req.user.ilustracionesval){
-            req.logOut();
-          res.redirect('/empleados/login');
-          req.flash("error_msg", "NO puedes acceder a esta ruta 😠😤");
+          res.render('empleados/denegado');
 
         }else{
             res.render('empleados/ilustraciones');

@@ -90,6 +90,8 @@ module.exports = {
     var errors = [];
 
    //validamos que la imagen no puede estar vacia
+   //creamos variable para el req.file.name asi poder validar la imagen mas facil
+  //  const imagen=req.file.filename
    if(req.file){
     if(req.file.filename){
       if(req.body){
@@ -108,10 +110,10 @@ module.exports = {
 
    
     const { name, email, password, confirm_password } = req.body;
-   //validaciones de campos vacios
+  //  validaciones de campos vacios
     if (!name || !email || !password || !confirm_password) {
       errors.push({ text: "Algun campo esta vacio" });
-
+     
     }
     if (password != confirm_password) {
       errors.push({ text: "contraseñas no coinciden" });
@@ -139,15 +141,19 @@ module.exports = {
 
         res.redirect("/users/add");
       } else {
+        
+          console.log("valor de inival "+ inival)
+          // Saving a New User
+       const newUser = new User({ name, email, password,filename,path,pages,inival,galeriaval,mapaval,ilustracionesval,eventosval});
+       // newUser.password = await newUser.encryptPassword(password);
+       newUser.user=req.user.id;
+       await newUser.save();
+       req.flash("success_msg", "Usuario registrado");
+       res.redirect("/users/all");
+
+        
        
-        console.log("valor de inival "+ inival)
-           // Saving a New User
-        const newUser = new User({ name, email, password,filename,path,pages,inival,galeriaval,mapaval,ilustracionesval,eventosval});
-        // newUser.password = await newUser.encryptPassword(password);
-        newUser.user=req.user.id;
-        await newUser.save();
-        req.flash("success_msg", "Usuario registrado");
-        res.redirect("/users/all");
+       
 
         
        
@@ -255,8 +261,6 @@ module.exports = {
       // const path='/uploads/images/'+req.file.filename;
   
       const { name, email, password } = req.body;
-     
-
       await User.findByIdAndUpdate(req.params.id, { name, email, password ,pages,inival,galeriaval,mapaval,ilustracionesval,eventosval  });
     }
     req.flash("success_msg", "El usuario a sido actualizado");
